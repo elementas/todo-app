@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: unless-stopped
+
+  postgres:
+    build: ./postgres
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=testas
+      - APP_BACKEND_PASSWORD=testas
+
+  backend:
+    build: ./backend
+    container_name: backend
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - APP_PORT=3000
+      - APP_POSTGRES_HOST=postgres
+      - APP_POSTGRES_PORT=5432
+      - APP_POSTGRES_DATABASE=todo
+      - APP_POSTGRES_USERNAME=backend
+      - APP_POSTGRES_PASSWORD=testas
+      - APP_REDIS_HOST=redis
+      - APP_REDIS_PORT=6379
+    
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
