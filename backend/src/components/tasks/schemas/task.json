@@ -1,0 +1,75 @@
+{
+    "type": "object",
+    "required": ["label"],
+    "additionalProperties": false,
+    "properties": {
+        "app_task_id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "app_list_id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "app_user_id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+        },
+        "description": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "maxLength": 32000
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "due": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "finished": {
+            "type": "boolean"
+        },
+        "finished_timestamp": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "updated": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "created": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "required": ["listId"],
+    "properties": {
+        "listId": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "taskId": {
+            "type": "string",
+            "format": "uuid"
+        }
+    }
+}
