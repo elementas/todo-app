@@ -63,7 +63,8 @@ exports.createUserTask = async (
     listId,
     label,
     description = null,
-    due = null
+    due = null,
+    finished = false
 ) => {
     const {
         rows: [task]
@@ -75,10 +76,11 @@ exports.createUserTask = async (
             "label",
             "description", 
             "due",
+            "finished",
             "order_position"
         )
         VALUES (
-            $1, $2, $3, $4, $5,
+            $1, $2, $3, $4, $5, $6,
             (
                 SELECT COUNT(at.*) + 1
                 FROM app_task at
@@ -100,7 +102,7 @@ exports.createUserTask = async (
             updated,
             created
         `,
-        [userId, listId, label, description, due]
+        [userId, listId, label, description, due, finished]
     );
 
     return task;

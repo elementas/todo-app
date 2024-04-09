@@ -55,7 +55,8 @@ exports.createTask = async (req, res, next) => {
             req.params.listId,
             req.body.label,
             req.body.description,
-            req.body.due
+            req.body.due,
+            req.body.finished
         );
 
         res.status(200).json({
