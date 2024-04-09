@@ -1,0 +1,1 @@
+INSERT INTO app_user("name", "email", "password", "admin", "superuser", "enabled") VALUES ('admin', 'admin@daryk', '$2a$11$9aPVw4iSt.ysCeswAlnQ1.uj.7YXTR0CITGiTxk60zDIcY9pC2Tli', TRUE, TRUE, TRUE);
